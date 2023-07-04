@@ -6,7 +6,7 @@ WORKDIR /opt/
 RUN ./gradlew connector:build
 
 FROM eclipse-temurin:17-jre-alpine
-COPY --from=build /opt/connector/build/libs/connector.jar /opt/connector.jar
+COPY --from=build /opt/connector/build/libs/merlot-connector.jar /opt/connector.jar
 
 WORKDIR /opt/
 ENTRYPOINT ["java","-jar","/opt/connector.jar"]
