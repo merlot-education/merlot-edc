@@ -19,11 +19,15 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
-    maven {
-        url = uri("https://maven.iais.fraunhofer.de/artifactory/eis-ids-public/")
+    mavenLocal()
+	mavenCentral()
+    maven {// while runtime-metamodel dependency is still a snapshot
+		url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
+
+val group: String by project
+val edcVersion: String by project
 
 dependencies {
     implementation(libs.edc.dsp)
@@ -35,6 +39,7 @@ dependencies {
     implementation(libs.edc.control.plane.core)
     implementation(libs.edc.transfer.data.plane)
     implementation(libs.edc.configuration.filesystem)
+    implementation(libs.edc.api.observability)
 
     implementation(libs.edc.data.plane.selector.api)
     implementation(libs.edc.data.plane.selector.core)
@@ -45,6 +50,10 @@ dependencies {
     implementation(libs.edc.data.plane.http)
 	implementation(libs.edc.data.plane.client)
 
+	implementation("${group}:contract-spi:${edcVersion}")	
+	implementation("${group}:policy-model:${edcVersion}")		
+	implementation("${group}:policy-spi:${edcVersion}")	
+	implementation("${group}:core-spi:${edcVersion}")	
 
 	implementation(project(":edc-ionos-extension:provision-ionos-s3"))
 	implementation(project(":edc-ionos-extension:data-plane-ionos-s3"))
