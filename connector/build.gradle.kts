@@ -30,44 +30,43 @@ val group: String by project
 val edcVersion: String by project
 
 dependencies {
-    implementation(libs.edc.dsp)
-	implementation(libs.edc.http)
-    implementation(libs.edc.iam.mock)
-    implementation(libs.edc.management.api)
-	implementation(libs.edc.auth.tokenbased)	
-    implementation(libs.edc.vault.filesystem)
-    implementation(libs.edc.control.plane.core)
-    implementation(libs.edc.transfer.data.plane)
-    implementation(libs.edc.configuration.filesystem)
-    implementation(libs.edc.api.observability)
+    implementation("${group}:dsp:${edcVersion}")
+    implementation("${group}:http:${edcVersion}")
+    implementation("${group}:iam-mock:${edcVersion}")
+    implementation("${group}:management-api:${edcVersion}")
+    implementation("${group}:auth-tokenbased:${edcVersion}")
+    implementation("${group}:vault-filesystem:${edcVersion}")
+    implementation("${group}:api-observability:${edcVersion}")
+    implementation("${group}:control-plane-core:${edcVersion}")
+    implementation("${group}:configuration-filesystem:${edcVersion}")
 
-    implementation(libs.edc.data.plane.selector.api)
-    implementation(libs.edc.data.plane.selector.core)
-    implementation(libs.edc.data.plane.selector.client)
+    implementation("${group}:data-plane-selector-core:${edcVersion}")
+    implementation("${group}:data-plane-selector-client:${edcVersion}")
 
-    implementation(libs.edc.data.plane.api)
-    implementation(libs.edc.data.plane.core)
-    implementation(libs.edc.data.plane.http)
-	implementation(libs.edc.data.plane.client)
-
-	implementation("${group}:contract-spi:${edcVersion}")	
-	implementation("${group}:policy-model:${edcVersion}")		
-	implementation("${group}:policy-spi:${edcVersion}")	
 	implementation("${group}:core-spi:${edcVersion}")	
+	implementation("${group}:policy-spi:${edcVersion}")	
+	implementation("${group}:policy-model:${edcVersion}")		
+	implementation("${group}:contract-spi:${edcVersion}")	
 
 	implementation(project(":edc-ionos-extension:provision-ionos-s3"))
-	implementation(project(":edc-ionos-extension:data-plane-ionos-s3"))
+
+    // provider
+    implementation("${group}:transfer-data-plane:${edcVersion}")
+    implementation("${group}:data-plane-core:${edcVersion}")
+    implementation("${group}:data-plane-client:${edcVersion}")
+    implementation(project(":edc-ionos-extension:data-plane-ionos-s3"))
 }
 
 application {
     mainClass.set("$group.boot.system.runtime.BaseRuntime")
 }
 
-var distTar = tasks.getByName("distTar")
-var distZip = tasks.getByName("distZip")
+tasks.shadowJar {
+   isZip64 = true  
+}
 
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    exclude("**/pom.properties", "**/pom.xm")
     mergeServiceFiles()
-    archiveFileName.set("connector.jar")
-    dependsOn(distTar, distZip)
+    archiveFileName.set("merlot-connector.jar")
 }
