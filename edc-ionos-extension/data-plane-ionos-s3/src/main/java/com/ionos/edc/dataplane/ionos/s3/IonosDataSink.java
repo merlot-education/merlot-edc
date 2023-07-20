@@ -40,8 +40,6 @@ public class IonosDataSink extends ParallelSink {
     @Override
     protected StreamResult<Void> transferParts(List<DataSource.Part> parts) {
         for (DataSource.Part part : parts) {
-        	 String blobName = part.name();
-        
             try (var input = part.openStream()) {
                
                
