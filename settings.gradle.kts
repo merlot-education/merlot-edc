@@ -30,9 +30,3 @@ dependencyResolutionManagement {
 
 // connector
 include(":connector")
-
-// ionos s3 extension
-include(":edc-ionos-extension:data-plane-ionos-s3")
-include(":edc-ionos-extension:provision-ionos-s3")
-include(":edc-ionos-extension:core-ionos-s3")
-include(":edc-ionos-extension:vault-hashicorp")
