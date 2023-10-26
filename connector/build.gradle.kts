@@ -20,9 +20,13 @@ plugins {
 
 repositories {
     mavenLocal()
-	mavenCentral()
-    maven {// while runtime-metamodel dependency is still a snapshot
-		url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+    mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.github.com/Digital-Ecosystems/edc-ionos-s3")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+        }
     }
 }
 
@@ -48,13 +52,13 @@ dependencies {
 	implementation("${group}:policy-model:${edcVersion}")		
 	implementation("${group}:contract-spi:${edcVersion}")	
 
-	implementation(project(":edc-ionos-extension:provision-ionos-s3"))
+	implementation("com.ionoscloud.edc:provisioning-ionos-s3:0.0.3-SNAPSHOT")
 
     // provider
     implementation("${group}:transfer-data-plane:${edcVersion}")
     implementation("${group}:data-plane-core:${edcVersion}")
     implementation("${group}:data-plane-client:${edcVersion}")
-    implementation(project(":edc-ionos-extension:data-plane-ionos-s3"))
+    implementation("com.ionoscloud.edc:data-plane-ionos-s3:0.0.3-SNAPSHOT")
 }
 
 application {
