@@ -39,7 +39,7 @@ dependencies {
     implementation("${group}:iam-mock:${edcVersion}")
     implementation("${group}:management-api:${edcVersion}")
     implementation("${group}:auth-tokenbased:${edcVersion}")
-    implementation("${group}:vault-hashicorp:${edcVersion}")	
+    // implementation("${group}:vault-hashicorp:${edcVersion}")	
     implementation("${group}:api-observability:${edcVersion}")
     implementation("${group}:control-plane-core:${edcVersion}")
     implementation("${group}:configuration-filesystem:${edcVersion}")
