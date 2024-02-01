@@ -22,6 +22,7 @@ repositories {
 }
 
 val edcVersion: String by project
+val edcGroup: String by project
 
 buildscript {
     dependencies {
@@ -31,7 +32,7 @@ buildscript {
 }
 
 allprojects {
-    apply(plugin = "$group.edc-build")
+    apply(plugin = "$edcGroup.edc-build")
 
     // configure which version of the annotation processor to use. defaults to the same version as the plugin
     configure<org.eclipse.edc.plugins.autodoc.AutodocExtension> {
