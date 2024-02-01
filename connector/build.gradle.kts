@@ -30,36 +30,35 @@ repositories {
     }
 }
 
-val group: String by project
+val edcGroup: String by project
 val edcVersion: String by project
+val ionosGroup: String by project
 val ionosS3Version: String by project
 
 dependencies {
-    implementation("${group}:dsp:${edcVersion}")
-    implementation("${group}:http:${edcVersion}")
-    implementation("${group}:iam-mock:${edcVersion}")
-    implementation("${group}:management-api:${edcVersion}")
-    implementation("${group}:auth-tokenbased:${edcVersion}")
-    // implementation("${group}:vault-hashicorp:${edcVersion}")	
-    implementation("${group}:api-observability:${edcVersion}")
-    implementation("${group}:control-plane-core:${edcVersion}")
-    implementation("${group}:configuration-filesystem:${edcVersion}")
+    implementation("${edcGroup}:boot:${edcVersion}")
+    implementation("${edcGroup}:control-plane-core:${edcVersion}")
+    implementation("${edcGroup}:control-plane-api:${edcVersion}")
+    implementation("${edcGroup}:control-plane-api-client:${edcVersion}")
+    implementation("${edcGroup}:api-observability:${edcVersion}")
+    implementation("${edcGroup}:configuration-filesystem:${edcVersion}")
 
-    implementation("${group}:data-plane-selector-core:${edcVersion}")
-    implementation("${group}:data-plane-selector-client:${edcVersion}")
+    implementation("${edcGroup}:auth-tokenbased:${edcVersion}")
+    implementation("${edcGroup}:management-api:${edcVersion}")
+    implementation("${edcGroup}:iam-mock:${edcVersion}")
+    implementation("${edcGroup}:dsp:${edcVersion}")
+    //file-transfer
+    implementation("${edcGroup}:data-plane-core:${edcVersion}")
+    implementation("${edcGroup}:data-plane-client:${edcVersion}")
+    implementation("${edcGroup}:data-plane-selector-client:${edcVersion}")
+    implementation("${edcGroup}:data-plane-selector-core:${edcVersion}")
+    implementation("${edcGroup}:transfer-data-plane:${edcVersion}")
+    implementation("${edcGroup}:data-plane-http:${edcVersion}")
+    implementation("${edcGroup}:http:${edcVersion}")
 
-	implementation("${group}:core-spi:${edcVersion}")	
-	implementation("${group}:policy-spi:${edcVersion}")	
-	implementation("${group}:policy-model:${edcVersion}")		
-	implementation("${group}:contract-spi:${edcVersion}")	
-
-	implementation("com.ionoscloud.edc:provision-ionos-s3:${ionosS3Version}")
-
-    // provider
-    implementation("${group}:transfer-data-plane:${edcVersion}")
-    implementation("${group}:data-plane-core:${edcVersion}")
-    implementation("${group}:data-plane-client:${edcVersion}")
-    implementation("com.ionoscloud.edc:data-plane-ionos-s3:${ionosS3Version}")
+	implementation("${ionosGroup}:core-ionos-s3:${ionosS3Version}")
+	implementation("${ionosGroup}:provision-ionos-s3:${ionosS3Version}")
+	implementation("${ionosGroup}:data-plane-ionos-s3:${ionosS3Version}")
 }
 
 application {
