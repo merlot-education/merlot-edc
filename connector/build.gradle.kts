@@ -45,7 +45,13 @@ dependencies {
 
     implementation("${edcGroup}:auth-tokenbased:${edcVersion}")
     implementation("${edcGroup}:management-api:${edcVersion}")
-    implementation("${edcGroup}:iam-mock:${edcVersion}")
+
+    //implementation("${edcGroup}:iam-mock:${edcVersion}")
+
+    implementation("${edcGroup}:oauth2-service:${edcVersion}")
+    implementation("${edcGroup}:oauth2-daps:${edcVersion}")
+    implementation("${edcGroup}:vault-filesystem:${edcVersion}")
+
     implementation("${edcGroup}:dsp:${edcVersion}")
     //file-transfer
     implementation("${edcGroup}:data-plane-core:${edcVersion}")
