@@ -4,7 +4,7 @@ This repository contains an EDC configuration which meets to the requirements of
 
 A list of all used EDC extensions can be found in the [gradle build file](./connector/build.gradle.kts).
 
-# Build
+## Build
 
 To build this connector you need to provide a GitHub read-only token in order to be able to fetch maven packages from GitHub. You can create this token at https://github.com/settings/tokens with at least the scope "read:packages".
 
@@ -12,7 +12,7 @@ Once the token is generated you can use the command below by replacing the respe
 
     USERNAME=REPLACEME_GITHUB_USER TOKEN=REPLACEME_GITHUB_TOKEN ./gradlew connector:build
 
-# Run
+## Run
 
 You can run the built EDC connector using:
 
@@ -20,7 +20,7 @@ You can run the built EDC connector using:
 
 This will launch the EDC with an exemplary configuration located [here](./resources/provider/provider-configuration.properties). If you want to be able to transfer to/from IONOS S3 buckets you will also need to provide the respective edc.ionos.* parameters there.
 
-# Deploy (Docker)
+## Deploy (Docker)
 
 Similarly to the standalone build and run from above, you need to provide a GitHub  token in the [git_auth_token.txt](./secrets/git_auth_token.txt) file.
 If you want to be able to transfer to/from IONOS S3 buckets you can configure the respective parameters in the [edc_ionos_secrets.txt](./secrets/edc_ionos_secrets.txt) file.
@@ -40,5 +40,5 @@ All EDC API endpoints can then then be accessed using these URLs:
 
 This structure (and hence the provided nginx configuration) follows the requirements of the MERLOT marketplace.
 
-# Deploy (Helm)
+## Deploy (Helm)
 TODO
