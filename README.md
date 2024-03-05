@@ -30,7 +30,7 @@ To deploy the EDC together with a properly configured reverse proxy, you can the
     docker compose up
 
 This will build and launch the EDC as well as forward all EDC-API requests through the nginx-proxy at http://localhost/myedc (which is the base URL of your new connector). 
-All EDC API endpoints can then then be accessed using these URLs:
+All EDC API endpoints can then be accessed using these URLs:
 
     http://localhost/myedc/api
     http://localhost/myedc/management
