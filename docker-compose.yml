@@ -29,7 +29,7 @@ services:
     image: nginx:latest
     container_name: nginx
     volumes:
-      - nginx/reverse_proxy.conf:/etc/nginx/nginx.conf
+      - ./nginx/reverse_proxy.conf:/etc/nginx/nginx.conf
     network_mode: "host"
 
 secrets:
