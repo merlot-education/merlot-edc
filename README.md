@@ -29,14 +29,14 @@ To deploy the EDC together with a properly configured reverse proxy, you can the
 
     docker compose up
 
-This will build and launch the EDC as well as forward all EDC-API requests through the nginx-proxy at http://localhost:8123/myedc (which is the base URL of your new connector). 
+This will build and launch the EDC as well as forward all EDC-API requests through the nginx-proxy at http://localhost/myedc (which is the base URL of your new connector). 
 All EDC API endpoints can then then be accessed using these URLs:
 
-    http://localhost:8123/myedc/api
-    http://localhost:8123/myedc/management
-    http://localhost:8123/myedc/protocol
-    http://localhost:8123/myedc/public
-    http://localhost:8123/myedc/control
+    http://localhost/myedc/api
+    http://localhost/myedc/management
+    http://localhost/myedc/protocol
+    http://localhost/myedc/public
+    http://localhost/myedc/control
 
 This structure (and hence the provided nginx configuration) follows the requirements of the MERLOT marketplace.
 
