@@ -1,4 +1,4 @@
-# MERLOT conformant EDC Connector
+# MERLOT EDC Connector
 
 This repository contains an EDC configuration which meets to the requirements of the MERLOT federation.
 
