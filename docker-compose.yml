@@ -1,0 +1,34 @@
+  myedc:
+    container_name: "myedc"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      secrets:
+        - "GIT_AUTH_TOKEN"
+    environment:
+      WEB_HTTP_PORT: 19191
+      WEB_HTTP_PATH: /api
+      WEB_HTTP_MANAGEMENT_PORT: 19193
+      WEB_HTTP_MANAGEMENT_PATH: /management
+      WEB_HTTP_PROTOCOL_PORT: 19194
+      WEB_HTTP_PROTOCOL_PATH: /protocol
+      WEB_HTTP_PUBLIC_PORT: 19291
+      WEB_HTTP_PUBLIC_PATH: /public
+      WEB_HTTP_CONTROL_PORT: 19192
+      WEB_HTTP_CONTROL_PATH: /control
+      EDC_PARTICIPANT_ID: myedc
+      EDC_DSP_CALLBACK_ADDRESS: http://localhost/myedc/protocol
+      EDC_API_AUTH_KEY: 5678
+    env_file: "secrets/edc_ionos_secrets.txt"
+    network_mode: "host"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - nginx/reverse_proxy.conf:/etc/nginx/nginx.conf
+    network_mode: "host"
+
+secrets:
+  GIT_AUTH_TOKEN:
+    file: "secrets/git_auth_token.txt"
