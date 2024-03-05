@@ -18,7 +18,7 @@ You can run the built EDC connector using:
 
     java -Dedc.fs.config=resources/provider/provider-configuration.properties -jar connector2/build/libs/merlot-connector.jar
 
-This will launch the EDC with an exemplary confugration located [here](./resources/provider/provider-configuration.properties). If you want to be able to transfer to/from IONOS S3 buckets you will also need to provide the respective edc.ionos.* parameters there.
+This will launch the EDC with an exemplary configuration located [here](./resources/provider/provider-configuration.properties). If you want to be able to transfer to/from IONOS S3 buckets you will also need to provide the respective edc.ionos.* parameters there.
 
 # Deploy (Docker)
 
