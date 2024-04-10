@@ -22,7 +22,21 @@ services:
       EDC_PARTICIPANT_ID: myedc
       EDC_DSP_CALLBACK_ADDRESS: http://localhost/myedc/protocol
       EDC_API_AUTH_KEY: 5678
+      EDC_PARTICIPANT_ID: YOUR_DAPS_ID
+      EDC_OAUTH_TOKEN_URL: DAPS_TOKEN_URL
+      EDC_OAUTH_CERTIFICATE_ALIAS: 1
+      EDC_OAUTH_PRIVATE_KEY_ALIAS: 1
+      EDC_OAUTH_CLIENT_ID: YOUR_DAPS_ID
+      EDC_OAUTH_PROVIDER_JWKS_URL: DAPS_JWKS_URL
+      EDC_OAUTH_PROVIDER_AUDIENCE: idsc:IDS_CONNECTORS_ALL
+      EDC_IAM_TOKEN_SCOPE: idsc:IDS_CONNECTOR_ATTRIBUTES_ALL
+      EDC_VAULT: /opt/connector/vault.properties
+      EDC_KEYSTORE: /opt/connector/mykeystore.pfx
+      EDC_KEYSTORE_PASSWORD: 123456
     env_file: "secrets/edc_ionos_secrets.txt"
+    volumes:
+      - ./resources/provider/mykeystore.pfx:/opt/connector/mykeystore.pfx
+      - ./resources/provider/vault.properties:/opt/connector/vault.properties
     network_mode: "host"
 
   nginx:

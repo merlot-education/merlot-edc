@@ -20,10 +20,12 @@ You can run the built EDC connector using:
 
 This will launch the EDC with an exemplary configuration located [here](./resources/provider/provider-configuration.properties). If you want to be able to transfer to/from IONOS S3 buckets you will also need to provide the respective edc.ionos.* parameters there.
 
+Furthermore you need to specify the parameters required for DAPS authentication in order to talk to other EDCs in the MERLOT Federation.
+
 ## Deploy (Docker)
 
 Similarly to the standalone build and run from above, you need to provide a GitHub  token in the [git_auth_token.txt](./secrets/git_auth_token.txt) file.
-If you want to be able to transfer to/from IONOS S3 buckets you can configure the respective parameters in the [edc_ionos_secrets.txt](./secrets/edc_ionos_secrets.txt) file.
+If you want to be able to transfer to/from IONOS S3 buckets you can configure the respective parameters in the [edc_ionos_secrets.txt](./secrets/edc_ionos_secrets.txt) file. Finally you will also need the parameters and a keystore file containing the DAPS certificate to authenticate against the DAPS server.
 
 To deploy the EDC together with a properly configured reverse proxy, you can then use the following command:
 
