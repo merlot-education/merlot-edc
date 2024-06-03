@@ -19,7 +19,6 @@ services:
       WEB_HTTP_PUBLIC_PATH: /public
       WEB_HTTP_CONTROL_PORT: 19192
       WEB_HTTP_CONTROL_PATH: /control
-      EDC_PARTICIPANT_ID: myedc
       EDC_DSP_CALLBACK_ADDRESS: http://localhost/myedc/protocol
       EDC_API_AUTH_KEY: 5678
       EDC_PARTICIPANT_ID: YOUR_DAPS_ID
