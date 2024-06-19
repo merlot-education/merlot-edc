@@ -12,6 +12,24 @@ Once the token is generated you can use the command below by replacing the respe
 
     USERNAME=REPLACEME_GITHUB_USER TOKEN=REPLACEME_GITHUB_TOKEN ./gradlew connector:build
 
+## Configuration
+
+The following environment variables (alternatively the configuration.properties entries) need to be set for the EDC to be working within MERLOT:
+
+`EDC_DSP_CALLBACK_ADDRESS`: Set this to the protocol path of the (public) domain of your EDC, e.g. http://example.com/myedc/protocol
+`EDC_API_AUTH_KEY`: Set this to some secure random key for authentication towards the EDC API
+`EDC_PARTICIPANT_ID`: Set this to the DAPS Client ID found in the MPO when editing your organization
+`EDC_OAUTH_TOKEN_URL`: Set this to the token URL of the MERLOT DAPS instance you want to use, i.e. for the demo environment use https://daps.demo.merlot-education.eu/auth/token
+`EDC_OAUTH_CERTIFICATE_ALIAS`: Set this to "1" to reference the secret in the keystore provided by the MPO
+`EDC_OAUTH_PRIVATE_KEY_ALIAS`: Set this to "1" to reference the secret in the keystore provided by the MPO
+`EDC_OAUTH_CLIENT_ID`: Same as `EDC_PARTICIPANT_ID`, set this to the DAPS Client ID found in the MPO when editing your organization
+`EDC_OAUTH_PROVIDER_JWKS_URL`: Set this to the JWKS URL of the MERLOT DAPS instance you want to use, i.e. for the demo environment use https://daps.demo.merlot-education.eu/auth/jwks.json
+`EDC_OAUTH_PROVIDER_AUDIENCE`: Set this to "idsc:IDS_CONNECTORS_ALL" for the correct audience with the MERLOT DAPS
+`EDC_IAM_TOKEN_SCOPE`: Set this to "idsc:IDS_CONNECTOR_ATTRIBUTES_ALL" for the correct scope with the MERLOT DAPS
+`EDC_VAULT`: Set this to your vault.properties file path (can be an empty file), e.g. /opt/connector/vault.properties
+`EDC_KEYSTORE`: Set this to the file path of your keystore found in the MPO when editing your organization, e.g. /opt/connector/mykeystore.pfx
+`EDC_KEYSTORE_PASSWORD`: Set this to the password of your keystore found in the MPO when editing your organization
+
 ## Run
 
 You can run the built EDC connector using:
