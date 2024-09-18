@@ -36,33 +36,46 @@ val ionosGroup: String by project
 val ionosS3Version: String by project
 
 dependencies {
+    // Core
+    implementation("${edcGroup}:connector-core:${edcVersion}")
     implementation("${edcGroup}:boot:${edcVersion}")
-    implementation("${edcGroup}:control-plane-core:${edcVersion}")
-    implementation("${edcGroup}:control-plane-api:${edcVersion}")
-    implementation("${edcGroup}:control-plane-api-client:${edcVersion}")
-    implementation("${edcGroup}:api-observability:${edcVersion}")
+    implementation("${edcGroup}:http:${edcVersion}")
+    implementation("${edcGroup}:dsp:${edcVersion}")
     implementation("${edcGroup}:configuration-filesystem:${edcVersion}")
-
-    implementation("${edcGroup}:auth-tokenbased:${edcVersion}")
     implementation("${edcGroup}:management-api:${edcVersion}")
+    implementation("${edcGroup}:api-observability:${edcVersion}")
 
-    //implementation("${edcGroup}:iam-mock:${edcVersion}")
+    // Vault
+    implementation("${edcGroup}:vault-filesystem:${edcVersion}")
+    //implementation("${edcGroup}:vault-hashicorp:${edcVersion}")
 
+    // Auth
+    implementation("${edcGroup}:auth-tokenbased:${edcVersion}")
     implementation("${edcGroup}:oauth2-service:${edcVersion}")
     implementation("${edcGroup}:oauth2-daps:${edcVersion}")
-    implementation("${edcGroup}:vault-filesystem:${edcVersion}")
+    //implementation("${edcGroup}:iam-mock:${edcVersion}")
 
-    implementation("${edcGroup}:dsp:${edcVersion}")
-    //file-transfer
+    // Control Plane
+    implementation("${edcGroup}:control-plane-core:${edcVersion}")
+    implementation("${edcGroup}:control-plane-api:${edcVersion}")
+    implementation("${edcGroup}:control-api-configuration:${edcVersion}")
+    implementation("${edcGroup}:control-plane-api-client:${edcVersion}")
+
+    // Data Plane
     implementation("${edcGroup}:data-plane-core:${edcVersion}")
     implementation("${edcGroup}:data-plane-client:${edcVersion}")
+    implementation("${edcGroup}:data-plane-api:${edcVersion}")
     implementation("${edcGroup}:data-plane-selector-client:${edcVersion}")
     implementation("${edcGroup}:data-plane-selector-core:${edcVersion}")
-    implementation("${edcGroup}:transfer-data-plane:${edcVersion}")
+    implementation("${edcGroup}:data-plane-selector-api:${edcVersion}")
     implementation("${edcGroup}:data-plane-http:${edcVersion}")
-    implementation("${edcGroup}:http:${edcVersion}")
 
-	implementation("${ionosGroup}:core-ionos-s3:${ionosS3Version}")
+    // Transfer
+    implementation("${edcGroup}:transfer-data-plane:${edcVersion}")
+    implementation("${edcGroup}:validator-data-address-http-data:${edcVersion}")
+    implementation("${edcGroup}:transfer-pull-http-receiver:${edcVersion}")
+
+    // IONOS S3
 	implementation("${ionosGroup}:provision-ionos-s3:${ionosS3Version}")
 	implementation("${ionosGroup}:data-plane-ionos-s3:${ionosS3Version}")
 }
